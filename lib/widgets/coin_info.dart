@@ -12,6 +12,7 @@ class CoinInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Text(
           name,
