@@ -1,3 +1,7 @@
+#include <filesystem> 
+using namespace std::filesystem;
+using namespace std;
+
 #include "my_application.h"
 
 #include <flutter_linux/flutter_linux.h>

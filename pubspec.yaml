@@ -43,7 +43,7 @@ dependencies:
   web_smooth_scroll: ^2.0.0
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.14.3"
+  icons_launcher: "^3.0.1"
   flutter_native_splash: ^2.4.6
   flutter_web_optimizer: ^1.5.1
   flutter_test:
@@ -56,25 +56,38 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
+
+
 flutter_native_splash:
   color: "#000000"
   web: true
 
-flutter_launcher_icons:
-  linux: true
-  android: "launcher_icon"
-  image_path: "assets/images/icon.png"
-  web:
-    generate: true
-    image_path: "assets/images/icon.png"
-    background_color: "#000000"
-    theme_color: "#000000"
+icons_launcher:
+  image_path: "assets/icon.png"
+  platforms:
+    web:
+      enable: true
+    macos:
+      enable: true
+    linux:
+      enable: true
+    windows:
+      enable: true
+    android:
+      enable: true
+    ios:
+      enable: true
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/icon.png
+    - assets/images/icon.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
