@@ -1,5 +1,5 @@
 name: cryptoflow
-description: "A new Flutter project."
+description: "Track crypto prices in style and privacy."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -40,8 +40,12 @@ dependencies:
   fl_chart: ^0.70.2
   intl: ^0.20.2
   url_launcher: ^6.3.1
+  web_smooth_scroll: ^2.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.14.3"
+  flutter_native_splash: ^2.4.6
+  flutter_web_optimizer: ^1.5.1
   flutter_test:
     sdk: flutter
 
@@ -51,6 +55,20 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
+flutter_native_splash:
+  color: "#000000"
+  web: true
+
+flutter_launcher_icons:
+  linux: true
+  android: "launcher_icon"
+  image_path: "assets/images/icon.png"
+  web:
+    generate: true
+    image_path: "assets/images/icon.png"
+    background_color: "#000000"
+    theme_color: "#000000"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

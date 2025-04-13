@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     // valueListenable: themeNotifier,
     //       builder: (_, ThemeMode currentMode, __) {
     return MaterialApp(
-      theme: AdwaitaThemeData.light(),
+       theme: AdwaitaThemeData.light(),
       darkTheme: AdwaitaThemeData.dark(),
       debugShowCheckedModeBanner: false,
       home: Home(),
