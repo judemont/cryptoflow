@@ -89,7 +89,8 @@ class _PriceChartState extends State<PriceChart> {
                                 widget
                                     .priceHistory[
                                         widget.priceHistory.indexOf(e) - 1]
-                                    .price!)
+                                    .price ??
+                                0)
                             .toDouble(),
                       );
                     }).toList(),

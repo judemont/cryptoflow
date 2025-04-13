@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 String formatPrice(double? price, String symbol) {
   if (price == null) return 'N/A';
 
-  if (price < 0.01 && price > 0) {
+  if (price < 1 && price > 0) {
     if (price < 0.000001) {
       return '$symbol ${price.toStringAsExponential(2)}';
     }
@@ -19,7 +19,7 @@ String formatPrice(double? price, String symbol) {
           break;
         }
       }
-      int significantDigits = leadingZeros + 2;
+      int significantDigits = leadingZeros + 4;
       return '$symbol ${price.toStringAsFixed(significantDigits)}';
     }
   }
