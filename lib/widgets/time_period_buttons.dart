@@ -10,8 +10,6 @@ class TimePeriodButtons extends StatefulWidget {
 
 class _TimePeriodButtonsState extends State<TimePeriodButtons> {
   final timePeriods = [
-    "1h",
-    "3h",
     "12h",
     "24h",
     "7d",

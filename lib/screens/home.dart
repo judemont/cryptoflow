@@ -25,7 +25,8 @@ class _HomeState extends State<Home> {
   }
 
   void updateList() {
-    getListings(search: searchText).then((value) {
+    getListings(search: searchText, order: orderBy, orderDirection: order)
+        .then((value) {
       if (value != null) {
         setState(() {
           cryptoList = value;
@@ -34,8 +35,32 @@ class _HomeState extends State<Home> {
     });
   }
 
+  List orders = [
+    {
+      "name": "Market Cap",
+      "value": "marketCap",
+      "icon": Icon(Icons.pie_chart),
+    },
+    {
+      "name": "24h Volume",
+      "value": "24hVolume",
+      "icon": Icon(Icons.currency_exchange)
+    },
+    {
+      "name": "Price Change 24h",
+      "value": "change",
+      "icon": Icon(Icons.show_chart)
+    },
+    {
+      "name": "Last listed",
+      "value": "listedAt",
+      "icon": Icon(Icons.rocket_launch)
+    }
+  ];
   List<Crypto> cryptoList = [];
   String searchText = "";
+  String orderBy = "marketCap";
+  String order = "desc";
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +97,63 @@ class _HomeState extends State<Home> {
                 });
                 updateList();
               },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.primary,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: DropdownMenu(
+                        menuStyle: MenuStyle(),
+                        inputDecorationTheme: const InputDecorationTheme(
+                          border: OutlineInputBorder(),
+                        ),
+                        enableSearch: false,
+                        trailingIcon: const Icon(Icons.sort),
+                        initialSelection: orders[0]["value"],
+                        onSelected: (value) {
+                          setState(() {
+                            orderBy = value;
+                            if (!["change"].contains(orderBy)) {
+                              order = "desc";
+                            }
+                          });
+                          updateList();
+                        },
+                        dropdownMenuEntries: orders.map((e) {
+                          return DropdownMenuEntry(
+                            leadingIcon: e["icon"],
+                            label: e["name"],
+                            value: e["value"],
+                          );
+                        }).toList(growable: false))),
+                Visibility(
+                  visible: ["change"].contains(orderBy),
+                  child: IconButton(
+                    icon: Icon(
+                      order == "asc"
+                          ? Icons.arrow_upward
+                          : Icons.arrow_downward,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        order = order == "asc" ? "desc" : "asc";
+                      });
+                      updateList();
+                    },
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 100,

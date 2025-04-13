@@ -83,15 +83,24 @@ class _PriceChartState extends State<PriceChart> {
                       ),
                     ),
                     spots: widget.priceHistory.map((e) {
-                      return FlSpot(
-                        e.dateTime!.millisecondsSinceEpoch.toDouble(),
-                        (e.price ??
+                      double price;
+                      try {
+                        price = (e.price ??
                                 widget
                                     .priceHistory[
                                         widget.priceHistory.indexOf(e) - 1]
                                     .price ??
                                 0)
-                            .toDouble(),
+                            .toDouble();
+                      } catch (e) {
+                        price = 0;
+                      }
+
+                      double time =
+                          e.dateTime!.millisecondsSinceEpoch.toDouble();
+                      return FlSpot(
+                        time,
+                        price,
                       );
                     }).toList(),
                   )
