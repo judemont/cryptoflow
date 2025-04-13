@@ -22,6 +22,7 @@ class _TimePeriodButtonsState extends State<TimePeriodButtons> {
   ];
   String selectedTimePeriod = "7d";
 
+  @override
   void initState() {
     super.initState();
     widget.onTimePeriodSelected(selectedTimePeriod);

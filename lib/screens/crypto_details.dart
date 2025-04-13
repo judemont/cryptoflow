@@ -100,7 +100,7 @@ class _CryptoDetailsState extends State<CryptoDetails> {
                                   Expanded(
                                     flex: 3,
                                     child: Column(children: [
-                                      Container(
+                                      SizedBox(
                                         width: double.infinity,
                                         height: 400,
                                         child: PriceChart(
@@ -126,7 +126,7 @@ class _CryptoDetailsState extends State<CryptoDetails> {
                                   SizedBox(
                                     height: 20,
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: double.infinity,
                                     height: 300,
                                     child:

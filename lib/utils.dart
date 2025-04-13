@@ -42,7 +42,7 @@ String formatPrice(double? price, String symbol) {
 
 Future<http.Response> httpGet(Uri url) async {
   Uri requestURl =
-      Uri.https("futureofthe.tech", "/proxy", {"url": url.toString()});
+      Uri.https("cryptoproxy.futureofthe.tech", "", {"url": url.toString()});
 
   var reponse = await http.get(requestURl);
 
@@ -50,7 +50,7 @@ Future<http.Response> httpGet(Uri url) async {
 }
 
 String toProxyUrl(String url) {
-  Uri resultURL = Uri.https("futureofthe.tech", "/proxy", {"url": url});
+  Uri resultURL = Uri.https("cryptoproxy.futureofthe.tech", "", {"url": url});
 
   return resultURL.toString();
 }
