@@ -1,4 +1,4 @@
-package com.example.cryptoflow
+package jdm.apps.cryptoflow
 
 import io.flutter.embedding.android.FlutterActivity
 

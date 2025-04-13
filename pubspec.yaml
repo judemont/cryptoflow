@@ -44,8 +44,6 @@ dependencies:
 
 dev_dependencies:
   icons_launcher: "^3.0.1"
-  flutter_native_splash: ^2.4.6
-  flutter_web_optimizer: ^1.5.1
   flutter_test:
     sdk: flutter
 
