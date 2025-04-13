@@ -28,7 +28,20 @@ class _PriceChartState extends State<PriceChart> {
   ];
 
   String formatTime(DateTime dateTime) {
-    return "${dateTime.day} ${months[dateTime.month]}";
+    DateTime firstTime = widget.priceHistory.first.dateTime!;
+    DateTime lastTime = widget.priceHistory.last.dateTime!;
+
+    if (firstTime.year == lastTime.year) {
+      if (firstTime.day == lastTime.day) {
+        if (firstTime.hour <= lastTime.hour + 4) {
+          return "${dateTime.hour}:${dateTime.minute}";
+        }
+        return "${dateTime.hour}h";
+      }
+
+      return "${dateTime.day} ${months[dateTime.month - 1]}";
+    }
+    return "${months[dateTime.month - 1]} ${dateTime.year}";
   }
 
   @override
@@ -41,10 +54,10 @@ class _PriceChartState extends State<PriceChart> {
             right: 18.0,
           ),
           child: LineChart(
-    
             LineChartData(
                 lineBarsData: [
                   LineChartBarData(
+                    isCurved: true,
                     dotData: const FlDotData(show: false),
                     shadow: Shadow(
                       color: Theme.of(context).colorScheme.primary,
@@ -72,7 +85,12 @@ class _PriceChartState extends State<PriceChart> {
                     spots: widget.priceHistory.map((e) {
                       return FlSpot(
                         e.dateTime!.millisecondsSinceEpoch.toDouble(),
-                        e.price!.toDouble(),
+                        (e.price ??
+                                widget
+                                    .priceHistory[
+                                        widget.priceHistory.indexOf(e) - 1]
+                                    .price!)
+                            .toDouble(),
                       );
                     }).toList(),
                   )
@@ -118,7 +136,8 @@ class _PriceChartState extends State<PriceChart> {
                           ),
                           children: [
                             TextSpan(
-                              text: formatTime(date),
+                              text:
+                                  "${date.day} ${months[date.month - 1]} ${date.year}, ${date.hour}:${date.minute}h",
                               style: TextStyle(
                                 //      color: AppColors.contentColorGreen.darken(20),
                                 fontWeight: FontWeight.bold,

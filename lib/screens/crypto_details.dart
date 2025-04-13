@@ -3,10 +3,10 @@ import 'package:cryptoflow/models/crypto.dart';
 import 'package:cryptoflow/services/coins_api.dart';
 import 'package:cryptoflow/utils.dart';
 import 'package:cryptoflow/widgets/coin_icon.dart';
-import 'package:cryptoflow/widgets/coin_info.dart';
+import 'package:cryptoflow/widgets/info_column.dart';
 import 'package:cryptoflow/widgets/price_chart.dart';
+import 'package:cryptoflow/widgets/time_period_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CryptoDetails extends StatefulWidget {
   final String cryptoId;
@@ -20,19 +20,15 @@ class _CryptoDetailsState extends State<CryptoDetails> {
   Crypto? crypto;
   List<CoinPrice> priceHistory = [];
 
-  final timePeriods = [
-    "1h",
-    "3h",
-    "12",
-    "24h",
-    "7d",
-    "30d",
-    "3m",
-    "1y",
-    "3y",
-    "5y",
-  ];
-  final defaultTimePeriod = "7d";
+  void onTimePeriodSelected(String timePeriod) {
+    getPricesHistory(widget.cryptoId, timePeriod).then((value) {
+      if (value != null) {
+        setState(() {
+          priceHistory = value;
+        });
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -41,13 +37,6 @@ class _CryptoDetailsState extends State<CryptoDetails> {
       if (value != null) {
         setState(() {
           crypto = value;
-        });
-      }
-    });
-    getPricesHistory(widget.cryptoId, defaultTimePeriod).then((value) {
-      if (value != null) {
-        setState(() {
-          priceHistory = value;
         });
       }
     });
@@ -98,7 +87,7 @@ class _CryptoDetailsState extends State<CryptoDetails> {
                             ),
                           ],
                         ),
-                        SizedBox(height: isWideScreen ? 200 : 30),
+                        SizedBox(height: isWideScreen ? 200 : 50),
                         isWideScreen
                             ? Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,12 +99,18 @@ class _CryptoDetailsState extends State<CryptoDetails> {
                                   const SizedBox(width: 20),
                                   Expanded(
                                     flex: 3,
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 400,
-                                      child: PriceChart(
-                                          priceHistory: priceHistory),
-                                    ),
+                                    child: Column(children: [
+                                      Container(
+                                        width: double.infinity,
+                                        height: 400,
+                                        child: PriceChart(
+                                            priceHistory: priceHistory),
+                                      ),
+                                      TimePeriodButtons(
+                                        onTimePeriodSelected:
+                                            onTimePeriodSelected,
+                                      ),
+                                    ]),
                                   ),
                                 ],
                               )
@@ -128,11 +123,17 @@ class _CryptoDetailsState extends State<CryptoDetails> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
                                   Container(
                                     width: double.infinity,
-                                    height: 400,
+                                    height: 300,
                                     child:
                                         PriceChart(priceHistory: priceHistory),
+                                  ),
+                                  TimePeriodButtons(
+                                    onTimePeriodSelected: onTimePeriodSelected,
                                   ),
                                   const SizedBox(height: 20),
                                   InfoColumn(crypto: crypto!),
@@ -144,105 +145,6 @@ class _CryptoDetailsState extends State<CryptoDetails> {
                 );
               },
             ),
-    );
-  }
-}
-
-class InfoColumn extends StatelessWidget {
-  final Crypto crypto;
-
-  const InfoColumn({super.key, required this.crypto});
-
-  final defaultInfoValueStyle = const TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.bold,
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CoinInfo(
-          name: "Price",
-          value: Text(
-            formatPrice(crypto.price, "\$"),
-            style: const TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        CoinInfo(
-          name: "Market Cap",
-          value: Text(
-            formatPrice(crypto.marketCap, "\$"),
-            style: defaultInfoValueStyle,
-          ),
-        ),
-        CoinInfo(
-          name: "Market Cap Rank",
-          value: Text(
-            crypto.marketCapRank.toString(),
-            style: defaultInfoValueStyle,
-          ),
-        ),
-        CoinInfo(
-          name: "24H Volume",
-          value: Text(
-            formatPrice(crypto.volume, "\$"),
-            style: defaultInfoValueStyle,
-          ),
-        ),
-        CoinInfo(
-          name: "Circulating Supply",
-          value: Text(
-            formatPrice(crypto.circulatingSupply, crypto.symbol ?? ""),
-            style: defaultInfoValueStyle,
-          ),
-        ),
-        CoinInfo(
-          name: "Max Supply",
-          value: Text(
-            formatPrice(crypto.totalSupply, crypto.symbol ?? ""),
-            style: defaultInfoValueStyle,
-          ),
-        ),
-        const SizedBox(height: 20),
-        Text(
-          "Info:",
-          style: const TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        CoinInfo(
-          name: "Website",
-          value: InkWell(
-            onTap: () {
-              launchUrl(Uri.parse(crypto.website ?? ""));
-            },
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(crypto.website ?? ""),
-              ),
-            ),
-          ),
-        ),
-        CoinInfo(
-          name: "Categories",
-          value: Wrap(
-            spacing: 8,
-            children: crypto.categories
-                    ?.where((e) =>
-                        e != "halal") // This category don't make any sense.
-                    .map((e) => Chip(label: Text(e)))
-                    .toList() ??
-                [],
-          ),
-        ),
-      ],
     );
   }
 }

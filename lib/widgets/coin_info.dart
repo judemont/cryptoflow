@@ -11,7 +11,7 @@ class CoinInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Wrap(
       children: [
         Text(
           name,
