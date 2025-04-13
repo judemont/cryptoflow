@@ -73,30 +73,42 @@ class _HomeState extends State<Home> {
         body: SingleChildScrollView(
           child: Column(children: [
             SizedBox(
-              height: 100,
+              height: 60,
             ),
-            SearchBar(
-              hintText: "Search for a coin",
-              leading: const Icon(Icons.search),
-              onChanged: (value) {
-                if (value.length < 3) {
-                  setState(() {
-                    searchText = "";
-                  });
-                  return;
-                }
+            Text(
+              "CryptoFlow",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: SearchBar(
+                padding: WidgetStateProperty.all(
+                    EdgeInsets.symmetric(horizontal: 20)),
+                hintText: "Search for a coin",
+                leading: const Icon(Icons.search),
+                onChanged: (value) {
+                  if (value.length < 3) {
+                    setState(() {
+                      searchText = "";
+                    });
+                    return;
+                  }
 
-                setState(() {
-                  searchText = value;
-                });
-                updateList();
-              },
-              onSubmitted: (value) {
-                setState(() {
-                  searchText = value;
-                });
-                updateList();
-              },
+                  setState(() {
+                    searchText = value;
+                  });
+                  updateList();
+                },
+                onSubmitted: (value) {
+                  setState(() {
+                    searchText = value;
+                  });
+                  updateList();
+                },
+              ),
             ),
             const SizedBox(
               height: 20,
