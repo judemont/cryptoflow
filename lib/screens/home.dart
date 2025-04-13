@@ -24,7 +24,18 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
+  void updateList() {
+    getListings(search: searchText).then((value) {
+      if (value != null) {
+        setState(() {
+          cryptoList = value;
+        });
+      }
+    });
+  }
+
   List<Crypto> cryptoList = [];
+  String searchText = "";
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +48,33 @@ class _HomeState extends State<Home> {
         body: SingleChildScrollView(
           child: Column(children: [
             SizedBox(
-              height: 200,
+              height: 100,
+            ),
+            SearchBar(
+              hintText: "Search for a coin",
+              leading: const Icon(Icons.search),
+              onChanged: (value) {
+                if (value.length < 3) {
+                  setState(() {
+                    searchText = "";
+                  });
+                  return;
+                }
+
+                setState(() {
+                  searchText = value;
+                });
+                updateList();
+              },
+              onSubmitted: (value) {
+                setState(() {
+                  searchText = value;
+                });
+                updateList();
+              },
+            ),
+            SizedBox(
+              height: 100,
             ),
             GridView.builder(
               padding: EdgeInsets.symmetric(
