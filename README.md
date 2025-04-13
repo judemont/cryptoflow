@@ -1,16 +1,6 @@
-# cryptoflow
+# CryptoFlow
 
-A new Flutter project.
+Track crypto-currency prices in style and privacy with CryptoFlow.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+  Cryptoflow is an application designed for tracking cryptocurrency prices with an appealing user interface while prioritizing user privacy. It ensures that all requests to the CoinRanking API are proxied, safeguarding personal information and enhancing security. With its intuitive design, Cryptoflow provides users with a seamless experience for monitoring market trends and price fluctuations in the cryptocurrency space.
