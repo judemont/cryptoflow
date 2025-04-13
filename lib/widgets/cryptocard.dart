@@ -1,7 +1,7 @@
 import 'package:cryptoflow/models/crypto.dart';
 import 'package:cryptoflow/utils.dart';
 import 'package:cryptoflow/widgets/coin_icon.dart';
-import 'package:cryptoflow/widgets/sparklineChart.dart';
+import 'package:cryptoflow/widgets/sparkline_chart.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCard extends StatefulWidget {

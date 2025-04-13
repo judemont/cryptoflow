@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:http/http.dart' as http;
 
 String formatPrice(double? price, String symbol) {
@@ -25,7 +23,6 @@ String formatPrice(double? price, String symbol) {
       return '$symbol ${price.toStringAsFixed(significantDigits)}';
     }
   }
-
   if (price >= 1000) {
     if (price >= 1000000) {
       if (price >= 1000000000000) {
@@ -36,7 +33,7 @@ String formatPrice(double? price, String symbol) {
         return '$symbol ${(price / 1000000).toStringAsFixed(2)}M';
       }
     } else {
-      return '$symbol ${price.toStringAsFixed(2).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')}';
+      return '$symbol ${price.toStringAsFixed(0).replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]} ')}';
     }
   }
 
