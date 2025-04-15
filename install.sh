@@ -2,7 +2,7 @@
 
 APP_NAME="CryptoFlow"
 EXECUTABLE_NAME="cryptoflow"
-GITHUB_ZIP_URL="https://github.com/youruser/yourrepo/releases/latest/download/cryptoflow.zip"
+GITHUB_ZIP_URL="https://github.com/judemont/cryptoflow/releases/latest/download/cryptoflow.zip"
 
 TMP_DIR="/tmp/${APP_NAME}_install"
 INSTALL_PATH="/opt/$APP_NAME"
