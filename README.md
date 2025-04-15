@@ -19,7 +19,7 @@ curl -sL https://futureofthe.tech/cryptoflow | bash
 2. `curl -sL https://futureofthe.tech/cryptoflow | bash `
 
 ## Web :
-[Web version](https://cf.futureofthe.tech)
+There is a [Web version](https://cf.futureofthe.tech) !
 
 ## Android :
 On android you can use [CryptoTracker](https://github.com/judemont/cryptotracker)
