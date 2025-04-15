@@ -12,11 +12,11 @@ Track crypto-currency prices in style and privacy with CryptoFlow.
 # Easy installation :
 ## Linux :
 ```bash
-curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/install.sh | bash
+curl -sL https://futureofthe.tech/cryptoflow | bash 
 ```
 ## Windows :
 1. Install Linux
-2. `curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/install.sh | bash`
+2. `curl -sL https://futureofthe.tech/cryptoflow | bash `
 
 ## Web :
 [Web version](https://cf.futureofthe.tech)
