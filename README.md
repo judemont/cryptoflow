@@ -15,7 +15,7 @@ Track crypto-currency prices in style and privacy with CryptoFlow.
 curl -sL https://futureofthe.tech/cryptoflow | bash 
 ```
 ## Windows :
-1. Install Linux
+1. (Install Linux)[https://www.howtogeek.com/693588/how-to-install-linux/]
 2. `curl -sL https://futureofthe.tech/cryptoflow | bash `
 
 ## Web :
