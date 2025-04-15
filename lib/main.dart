@@ -1,4 +1,5 @@
 import 'package:cryptoflow/screens/home.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:adwaita/adwaita.dart';
 
@@ -15,7 +16,9 @@ class MyApp extends StatelessWidget {
     // valueListenable: themeNotifier,
     //       builder: (_, ThemeMode currentMode, __) {
     return MaterialApp(
-       theme: AdwaitaThemeData.light(),
+      // scrollBehavior: const MaterialScrollBehavior().copyWith(
+      //     dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch}),
+      theme: AdwaitaThemeData.light(),
       darkTheme: AdwaitaThemeData.dark(),
       debugShowCheckedModeBanner: false,
       home: Home(),
