@@ -31,6 +31,9 @@ ICON_SRC=$(find "$INSTALL_PATH" -iname "*.png" | head -n 1)
 if [ -f "$ICON_SRC" ]; then
     ICON_DEST="$HOME/.local/share/icons/$ICON_NAME.png"
     mkdir -p "$(dirname "$ICON_DEST")"
+    if [ -f "$ICON_DEST" ]; then
+        rm "$ICON_DEST"
+    fi
     cp "$ICON_SRC" "$ICON_DEST"
     ICON_REF="$ICON_DEST"
 else
