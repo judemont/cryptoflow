@@ -5,6 +5,9 @@ Track crypto-currency prices in style and privacy with CryptoFlow.
 ---
   Cryptoflow is an application designed for tracking cryptocurrency prices with an appealing user interface while prioritizing user privacy. It ensures that all requests to the CoinRanking API are proxied, safeguarding personal information and enhancing security. With its intuitive design, Cryptoflow provides users with a seamless experience for monitoring market trends and price fluctuations in the cryptocurrency space.
 
+---
+![image](https://github.com/user-attachments/assets/3812b07a-b7a0-472b-a6c5-4c2c59805ed6)
+
 
 Easy installation :
 ## Linux :
@@ -14,3 +17,6 @@ curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/insta
 ## Windows :
 1. Install Linux
 2. `curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/install.sh | bash`
+
+## Web :
+[Web version](https://cf.futureofthe.tech)
