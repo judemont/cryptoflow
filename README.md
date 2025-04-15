@@ -11,3 +11,6 @@ Easy installation :
 ```bash
 curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/install.sh | bash
 ```
+## Windows :
+1. Install Linux
+2. `curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/install.sh | bash`
