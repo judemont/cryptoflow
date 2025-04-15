@@ -9,7 +9,7 @@ Track crypto-currency prices in style and privacy with CryptoFlow.
 ![image](https://github.com/user-attachments/assets/3812b07a-b7a0-472b-a6c5-4c2c59805ed6)
 
 
-Easy installation :
+# Easy installation :
 ## Linux :
 ```bash
 curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/install.sh | bash
@@ -20,3 +20,9 @@ curl https://raw.githubusercontent.com/judemont/cryptoflow/refs/heads/main/insta
 
 ## Web :
 [Web version](https://cf.futureofthe.tech)
+
+## Android :
+On android you can use [CryptoTracker](https://github.com/judemont/cryptotracker)
+
+## CLI :
+For comand line interface you can use [Tcoin](https://github.com/judemont/tcoin).
